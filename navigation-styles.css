@@ -1,0 +1,1127 @@
+/**
+ * Navigation System CSS
+ * Combined and optimized styles for the navigation bar and agenda components
+ * Enhanced for iframe compatibility
+ */
+
+ :root {
+    /* Core color variables */
+    --color-header-start: #004882;
+    --color-header-end: #005a9c;
+    --color-white: #ffffff;
+    --color-base: #004882; /* Primary theme color */
+    --color-base-hover: #003b6b; /* Darker version for hover states */
+    --color-bg-light: #E6F0F8;
+    --color-bg-hover: #cfe2f3;
+    --color-text: #333333;
+    --color-text-secondary: #555555;
+    --color-shadow: rgba(0, 0, 0, 0.12);
+    --color-shadow-hover: rgba(0, 0, 0, 0.2);
+    
+    /* Typography */
+    --font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    --font-size-base: 14px;
+    --font-size-small: 16px;
+    --font-size-sub: 30px;
+    --font-size-title: 18px;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 900;
+    
+    /* Spacing and layout */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --border-radius-sm: 4px;
+    --border-radius-md: 6px;
+    --border-radius-lg: 8px;
+    --transition-speed: 0.25s;
+    --max-content-width: 1000px;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px var(--color-shadow);
+    --shadow-md: 0 4px 8px var(--color-shadow);
+    --shadow-lg: 0 8px 16px var(--color-shadow);
+
+    /* Focus outline style */
+    --focus-outline-width: 2px;
+    --focus-outline-offset: 2px;
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    background: var(--color-white);
+    overflow-x: hidden;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+/* Enhanced button styles with theme-based outlines */
+button {
+    cursor: pointer;
+    font-family: var(--font-family);
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button:focus, 
+.nav__link:focus,
+.nav__sub-link:focus,
+.agenda-item:focus,
+.add-event:focus,
+a:focus {
+    outline: var(--focus-outline-width) solid var(--color-base);
+    outline-offset: var(--focus-outline-offset);
+}
+
+/* Add themed buttons */
+.btn-themed {
+    background-color: var(--color-base);
+    color: var(--color-white);
+    border: 1px solid var(--color-base);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    font-weight: var(--font-weight-medium);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-themed:hover {
+    background-color: var(--color-base-hover);
+    border-color: var(--color-base-hover);
+}
+
+.btn-themed:active {
+    transform: translateY(1px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-base);
+    border: 1px solid var(--color-base);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    font-weight: var(--font-weight-medium);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-bg-light);
+}
+
+.btn-outline:active {
+    transform: translateY(1px);
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    /* padding: 0 var(--spacing-md); */
+	border: 1px;
+}
+
+/* Pagina header*/
+.page-header{
+	color: #000;
+	border: 1px;
+}
+
+/* Header styles */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, var(--color-header-start), var(--color-header-end));
+    color: #000; !important
+    padding: var(--spacing-sm) var(--spacing-md);
+    width: 100%;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    box-sizing: border-box;
+    height: 60px;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.htit {
+	font-size: var(--font-size-title);
+	font-weight: var(--font-weight-bold);
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	background: linear-gradient(
+		90deg,
+		var(--color-header-start),
+		var(--color-header-end)
+								) !important;
+  color: white 
+}
+
+.header__icon-button {
+    background: none;
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed) ease;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.header__icon-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.header__icon-button:active {
+    transform: scale(0.95);
+}
+
+.header__icon-button .material-icons {
+    font-size: 20px;
+    color: var(--color-white);
+}
+
+/* Navigation styles */
+.nav {
+    margin: var(--spacing-md) auto;
+    padding: 0 var(--spacing-md);
+    width: 100%;
+    max-width: var(--max-content-width);
+}
+
+.nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.nav__item {
+    margin-bottom: 4px;
+    position: relative;
+}
+
+.nav__link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--spacing-md);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    background: var(--color-bg-light);
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-speed) ease;
+    color: var(--color-base);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    border: 1px solid var(--color-base); /* Added border */
+}
+
+.nav__link:hover, 
+.nav__link:focus {
+    background: var(--color-bg-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.nav__link:active {
+    transform: translateY(1px);
+}
+
+.nav__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    background: var(--color-header-start);
+    transition: width var(--transition-speed) ease;
+}
+
+.nav__link:hover::after,
+.nav__link:focus::after {
+    width: 100%;
+}
+
+.nav__link .material-icons {
+    font-size: 18px;
+    margin-right: var(--spacing-md);
+    flex-shrink: 0;
+    opacity: 0.8;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.nav__link:hover .material-icons,
+.nav__link:focus .material-icons {
+    opacity: 1;
+}
+
+/* Submenu styles - Updated for click behavior */
+.nav__sub-list {
+    list-style: none;
+    margin: var(--spacing-xs) 0 0 0;
+    padding-left: var(--spacing-lg);
+    background: var(--color-bg-light);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height var(--transition-speed) ease, 
+                opacity var(--transition-speed) ease, 
+                transform var(--transition-speed) ease,
+                visibility var(--transition-speed) ease;
+    opacity: 0;
+    transform: translateY(-10px);
+    border-left: 2px solid var(--color-header-start);
+    visibility: hidden;
+}
+
+/* When expanded class is added via JavaScript */
+.nav__sub-list.expanded {
+    max-height: 800px !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
+}
+
+.nav__sub-link {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sub);
+    text-decoration: none;
+    color: var(--color-base);
+    background: var(--color-bg-light);
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    border: 1px solid var(--color-base); /* Added border */
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 4px;
+}
+
+.nav__sub-link:hover, 
+.nav__sub-link:focus {
+    background: var(--color-bg-hover);
+    padding-left: calc(var(--spacing-md) + 4px);
+}
+
+.nav__sub-link::before {
+    content: 'â€º';
+    margin-right: var(--spacing-sm);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all var(--transition-speed) ease;
+}
+
+.nav__sub-link:hover::before,
+.nav__sub-link:focus::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Dropdown icon */
+.nav__dropdown-icon {
+    font-size: 16px;
+    color: var(--color-base);
+    margin-left: auto;
+    transition: transform var(--transition-speed) ease;
+}
+
+/* Updated Agenda styles */
+.agenda-container {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    background: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 12px;
+    border: 1px solid var(--color-base);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.agenda-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+
+.agenda-header h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-base);
+    margin: 0;
+}
+
+/* Update existing agenda-item styles for more modern look */
+.agenda-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 6px; /* reduced from 10px */
+    background: var(--color-white);
+    border-radius: 8px;
+    padding: 6px;       /* reduced from 10px */
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    border: 1px solid #000; /* make the row border black */
+}
+
+/* Enhance hover effect for modern look */
+.agenda-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+.agenda-item-date {
+    min-width: 0;        /* remove fixed min-width */
+    flex-shrink: 1;      /* allow shrinking */
+    width: 50% !important; /* enforce 50% width */
+    height: 48px;
+    background-color: var(--color-bg-light);
+    border: 1px solid var(--color-base);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-base);
+    margin-right: 8px; /* reduced from 12px */
+    flex-shrink: 0;
+    position: relative;
+    padding: 2px;      /* reduced from 4px */
+}
+
+.agenda-item-date-start {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.agenda-item-date-end {
+    font-size: 10px;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+.agenda-item-content {
+    flex-grow: 1;
+    min-width: 0; /* Fixes text overflow */
+}
+
+.agenda-item-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Add this after .agenda-item-title */
+.agenda-item-dates {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin: 2px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.agenda-item-dates::before {
+    content: "date_range";
+    font-family: 'Material Icons';
+    font-size: 14px;
+    margin-right: 4px;
+}
+
+.agenda-item-time {
+    font-size: 12px;
+    color: var(--color-base);
+    margin: 2px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.agenda-item-time::before {
+    content: "schedule";
+    font-family: 'Material Icons';
+    font-size: 14px;
+    margin-right: 4px;
+}
+
+.agenda-item-location {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin: 2px 0 0;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.agenda-item-location::before {
+    content: "place";
+    font-family: 'Material Icons';
+    font-size: 14px;
+    margin-right: 4px;
+}
+
+/* Hide description by default for compactness */
+.agenda-item-description {
+    display: none;
+}
+
+/* Show on hover/focus */
+.agenda-item:hover .agenda-item-description,
+.agenda-item:focus-within .agenda-item-description {
+    display: block;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin: 4px 0 0;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.add-event {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var (--color-base);
+    text-decoration: none;
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: var(--border-radius-sm);
+    transition: background-color 0.2s ease;
+}
+
+.add-event:hover {
+    background-color: var(--color-bg-light);
+    text-decoration: underline;
+    color: var(--color-header-end);
+}
+
+.loading-message {
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+    padding: 16px;
+}
+
+#pagination-controls {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#pagination-controls button {
+    background: var(--color-bg-light);
+    border: 1px solid var(--color-base);
+    color: var(--color-base);
+    border-radius: var(--border-radius-sm);
+    padding: 4px 12px;
+    margin: 0 4px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+#pagination-controls button:hover {
+    background: var(--color-bg-hover);
+}
+
+/* Themes */
+.theme-blue {
+    --color-header-start: #004882;
+    --color-header-end: #005a9c;
+    --color-base: #004882;
+    --color-base-hover: #003b6b;
+    --color-bg-light: #E6F0F8;
+    --color-bg-hover: #cfe2f3;
+}
+
+.theme-orange {
+    --color-header-start: #CA5010;
+    --color-header-end: #DB6800;
+    --color-base: #CA5010;
+    --color-base-hover: #A94210;
+    --color-bg-light: #FFF2E9;
+    --color-bg-hover: #FFDD99;
+}
+
+.theme-purple {
+    --color-header-start: #4B0082;
+    --color-header-end: #800080;
+    --color-base: #4B0082;
+    --color-base-hover: #3A0065;
+    --color-bg-light: #F3E5F5;
+    --color-bg-hover: #E1BEE7;
+}
+
+.theme-green {
+    --color-header-start: #006400;
+    --color-header-end: #008000;
+    --color-base: #006400;
+    --color-base-hover: #004D00;
+    --color-bg-light: #E8F5E9;
+    --color-bg-hover: #C8E6C9;
+}
+
+.theme-red {
+    --color-header-start: #800000;
+    --color-header-end: #A52A2A;
+    --color-base: #800000;
+    --color-base-hover: #660000;
+    --color-bg-light: #FBECEC;
+    --color-bg-hover: #FAD6D6;
+}
+
+.theme-turquoise {
+    --color-header-start: #006D77;
+    --color-header-end: #83C5BE;
+    --color-base: #006D77;
+    --color-base-hover: #00575F;
+    --color-bg-light: #EAF7F7;
+    --color-bg-hover: #C4E4E3;
+}
+
+/* Active state */
+.nav__link.active,
+.nav__sub-link.active {
+box-shadow: none;
+}
+
+
+/* Edit button */
+.nav-edit-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.edit-nav-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.edit-nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.edit-nav-btn:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    :root {
+        --font-size-base: 13px;
+        --font-size-small: 11px;
+        --font-size-sub: 13px;
+        --font-size-title: 16px;
+    }
+    
+    .header {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        height: 50px;
+    }
+    
+    .nav {
+        padding: var(--spacing-xs);
+        margin: var(--spacing-sm) auto;
+    }
+
+    .nav__link {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .nav__link .material-icons {
+        font-size: 16px;
+        margin-right: var(--spacing-sm);
+    }
+    
+    .nav__sub-link {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    .agenda-container {
+        padding: 12px;
+    }
+    
+    .agenda-item-date {
+        width: 50px;
+        height: 50px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header__title {
+        font-size: 15px;
+    }
+    
+    .nav__link {
+        flex-wrap: wrap;
+    }
+    
+    .nav__dropdown-icon {
+        font-size: 17px;
+    }
+    
+    .agenda-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .agenda-item-date {
+        margin-bottom: 8px;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 4px 8px;
+    }
+    
+    .agenda-item-date div {
+        margin: 0 4px;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-base);
+    outline-offset: 2px;
+}
+
+[data-theme="blue"] {
+    --color-header-start: #004882;
+    --color-header-end: #005a9c;
+    --color-base: #004882;
+    --color-base-hover: #003b6b;
+    --color-bg-light: #E6F0F8;
+    --color-bg-hover: #cfe2f3;
+}
+
+[data-theme="orange"] {
+    --color-header-start: #CA5010;
+    --color-header-end: #DB6800;
+    --color-base: #CA5010;
+    --color-base-hover: #A94210;
+    --color-bg-light: #FFF2E9;
+    --color-bg-hover: #FFDD99;
+}
+
+[data-theme="purple"] {
+    --color-header-start: #4B0082;
+    --color-header-end: #800080;
+    --color-base: #4B0082;
+    --color-base-hover: #3A0065;
+    --color-bg-light: #F3E5F5;
+    --color-bg-hover: #E1BEE7;
+}
+
+[data-theme="green"] {
+    --color-header-start: #006400;
+    --color-header-end: #008000;
+    --color-base: #006400;
+    --color-base-hover: #004D00;
+    --color-bg-light: #E8F5E9;
+    --color-bg-hover: #C8E6C9;
+}
+
+[data-theme="red"] {
+    --color-header-start: #800000;
+    --color-header-end: #A52A2A;
+    --color-base: #800000;
+    --color-base-hover: #660000;
+    --color-bg-light: #FBECEC;
+    --color-bg-hover: #FAD6D6;
+}
+
+[data-theme="turquoise"] {
+    --color-header-start: #006D77;
+    --color-header-end: #83C5BE;
+    --color-base: #006D77;
+    --color-base-hover: #00575F;
+    --color-bg-light: #EAF7F7;
+    --color-bg-hover: #C4E4E3;
+}
+
+/* Print styles */
+@media print {
+    .header,
+    .nav__sub-list,
+    .nav__dropdown-icon,
+    #pagination-controls,
+    .add-event {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+		
+    .nav__link,
+    .nav__sub-link {
+        color: black;
+        background: none;
+        box-shadow: none;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .agenda-container {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+/* IFRAME-SPECIFIC ENHANCEMENTS */
+
+/* Special styles for iframe-specific classes */
+.iframe-mode [class*="nav__"] {
+    z-index: 9999 !important;
+}
+
+.iframe-mode .nav__sub-list {
+    position: relative !important;
+    max-height: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0s linear 0.3s !important;
+}
+
+.iframe-mode .nav__sub-list.expanded {
+    max-height: 800px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out, visibility 0s linear 0s !important;
+}
+
+.iframe-mode .nav__link, 
+.iframe-mode .nav__sub-link {
+    cursor: pointer !important;
+    user-select: none !important;
+}
+
+/* Event Modal Styles */
+#eventModal {
+  transition: opacity 0.3s ease;
+}
+
+#eventModal .bg-brand-blue {
+  background-color: var(--color-base, #004882);
+}
+
+#eventModal .text-brand-blue {
+  color: var(--color-base, #004882);
+}
+
+#eventModal .hover\:bg-brand-blue-dark:hover {
+  background-color: var(--color-base-hover, #003b6b);
+}
+
+#modal-close {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+#modal-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#modal-description {
+  max-height: 200px;
+  overflow-y: auto;
+  line-height: 1.5;
+}
+
+/* Custom styling for agenda items to ensure they're clickable */
+.agenda-item {
+  cursor: pointer !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+
+.agenda-item:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fix pagination visibility */
+#pagination-controls button {
+  transition: all 0.3s ease;
+}
+
+#pagination-controls button:not([style*="display: none"]) {
+  display: inline-block !important;
+}
+
+.nav__sub-link::before {
+    content: '›';  /* Fixed encoding issue */
+    margin-right: var(--spacing-sm);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all var(--transition-speed) ease;
+}
+
+.add-event {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--color-base);  /* Fixed invalid CSS variable syntax */
+    text-decoration: none;
+    /* ...existing code... */
+}
+
+.agenda-item {
+    /* ...existing code... */
+    border: 1px solid rgba(0, 0, 0, 0.06);  /* Removed duplicate border */
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    /* Removed second border declaration */
+}
+
+:root {
+    /* Typography */
+    --font-size-base: 14px;
+    --font-size-small: 12px;  /* Fixed font size inconsistency */
+    --font-size-sub: 16px;    /* Adjusted to a more reasonable size */
+    /* ...existing code... */
+}
+
+/* Consolidated hover effect rules */
+.agenda-item:hover {
+    /* ...existing code... */
+    /* Merged rules from main CSS and "Custom styling for agenda items" section */
+}
+
+#menu {
+    min-height: 50px;
+    visibility: visible !important;
+    display: block !important;
+    opacity: 1 !important;
+}
+
+/* Fix submenu visibility issue */
+.nav__sub-list.expanded {
+    max-height: 800px !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out !important;
+}
+
+
+/* CSS Fixes - Add these to the bottom of your navigation-styles.css file */
+
+/* Fix visibility issue with expanded submenu visibility */
+.nav__sub-list.expanded {
+  max-height: 800px !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out, visibility 0s linear 0s !important;
+}
+
+/* Fix default menu visibility */
+#menu {
+  visibility: visible !important;
+  display: block !important;
+  opacity: 1 !important;
+  min-height: 50px;
+}
+
+/* Fix possible theme class issues */
+[data-theme] .nav__link,
+[data-theme] .nav__sub-link {
+  border-color: var(--color-base);
+  color: var(--color-base);
+}
+
+[data-theme] .nav__link .material-icons,
+[data-theme] .nav__sub-link .material-icons,
+[data-theme] .nav__dropdown-icon {
+  color: var(--color-base);
+}
+
+/* Add more specificity to dropdown handling */
+.nav__sub-list--collapsible.expanded {
+  max-height: 800px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Fix encoding issue with sub-link content */
+.nav__sub-link::before {
+  content: '\203A'; /* Use unicode escape sequence for › */
+}
+
+/* Fix stacking issues in iframes */
+body.iframe-mode .nav__item {
+  position: relative;
+  z-index: 10;
+}
+
+body.iframe-mode .nav__sub-list {
+  z-index: 20;
+}
+
+/* Debugging helper classes */
+.debug-outline {
+  outline: 2px solid red !important;
+}
+
+.debug-visible {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+ /* Fix submenu visibility */
+        .nav__sub-list.expanded {
+            max-height: 800px !important;
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            visibility: visible !important;
+            transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out, visibility 0s linear 0s !important;
+        }
+        
+        /* Fix menu visibility */
+        #menu {
+            visibility: visible !important;
+            display: block !important;
+            opacity: 1 !important;
+            min-height: 50px;
+        }
+        
+        /* Fix encoding issue with sub-link content */
+        .nav__sub-link::before {
+            content: '\203A'; /* Use unicode escape */
+        }
+        
+        /* Ensure data-theme works properly */
+        [data-theme="orange"] {
+            --color-header-start: #CA5010;
+            --color-header-end: #DB6800;
+            --color-base: #CA5010;
+            --color-base-hover: #A94210;
+            --color-bg-light: #FFF2E9;
+            --color-bg-hover: #FFDD99;
+        }
+		
+		
+		.headerC{
+			
+		}
+		
+		.headerD{
+		max-width: 500px; /* Maximale breedte */
+		heigth: 1000px;
+		margin-left: left;
+		margin-right: auto;
+		padding-left: 0.75rem; /* 4px */
+		padding-right: 0.75rem; /* Ruimte tussen woord 'navigatie' en de zijkant */
+		display: flex;
+
+  /* justify-between: Ruimte tussen flex items */
+  justify-content: space-between;
+
+  /* items-center: Centreer items verticaal */
+  align-items: center;
+}
+
+.alles-container { 
+  max-height: 100%; /*max hoogte van het gedeelte waar 'Navigatie' staat */
+  max-width: 350px;
+  border-radius: 10px; /* 8px Equivalent of rounded-lg */
+  overflow: clip;
+  background-color: #fff; /* Example: very light gray */
+
+}
+
+.header-acti {
+  display: flex;
+  align-items: right;
+  border-radius: 100px;
+  overflow: hidden;
+
+  /* Note: Background color might be needed depending on context */
+  /* background-color: #f8f8f8; /* Example */
+}
+
+/* Equivalent of space-x-2 (Applies margin between direct children) */
+/* Selects any direct child (*) immediately following another direct child (+)
+   within an element having the class .header-acti */
+.header-acti > * + * {
+  /* 2 usually = 0.5rem = 8px */
+  margin-left: 0.5rem;
+}
+
+.agenda-container {
+	border:1 px;
+}
+

@@ -1,0 +1,258 @@
+/* 3-Layer Menu Theming & Fixes */
+
+/* Fix submenu visibility for all levels */
+.nav__sub-list.expanded {
+  max-height: 800px !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out,
+    visibility 0s linear 0s !important;
+}
+
+/* NEW: Fix sub-sub-menu visibility */
+.nav__sub-sub-list.expanded {
+  max-height: 400px !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out,
+    visibility 0s linear 0s !important;
+}
+
+/* Fix menu visibility */
+#menu {
+  visibility: visible !important;
+  display: block !important;
+  opacity: 1 !important;
+  min-height: 50px;
+}
+
+/* Fix encoding issue with sub-link content */
+.nav__sub-link::before {
+  content: "\203A"; /* Use unicode escape */
+}
+
+/* NEW: Fix encoding for sub-sub-link content */
+.nav__sub-sub-link::before {
+  content: "\22C5"; /* Use unicode escape for middle dot */
+}
+
+/* Ensure all theme colors work properly */
+[data-theme="blue"] {
+  --color-header-start: #004882;
+  --color-header-end: #005a9c;
+  --color-base: #004882;
+  --color-base-hover: #003b6b;
+  --color-bg-light: #e6f0f8;
+  --color-bg-hover: #cfe2f3;
+}
+
+[data-theme="orange"] {
+  --color-header-start: #ca5010;
+  --color-header-end: #db6800;
+  --color-base: #ca5010;
+  --color-base-hover: #a94210;
+  --color-bg-light: #fff2e9;
+  --color-bg-hover: #ffdd99;
+}
+
+[data-theme="purple"] {
+  --color-header-start: #4b0082;
+  --color-header-end: #800080;
+  --color-base: #4b0082;
+  --color-base-hover: #3a0065;
+  --color-bg-light: #f3e5f5;
+  --color-bg-hover: #e1bee7;
+}
+
+[data-theme="green"] {
+  --color-header-start: #006400;
+  --color-header-end: #008000;
+  --color-base: #006400;
+  --color-base-hover: #004d00;
+  --color-bg-light: #e8f5e9;
+  --color-bg-hover: #c8e6c9;
+}
+
+[data-theme="red"] {
+  --color-header-start: #800000;
+  --color-header-end: #a52a2a;
+  --color-base: #800000;
+  --color-base-hover: #660000;
+  --color-bg-light: #fbecec;
+  --color-bg-hover: #fad6d6;
+}
+
+[data-theme="turquoise"] {
+  --color-header-start: #006d77;
+  --color-header-end: #83c5be;
+  --color-base: #006d77;
+  --color-base-hover: #00575f;
+  --color-bg-light: #eaf7f7;
+  --color-bg-hover: #c4e4e3;
+}
+
+/* Calendar container styling */
+#calendar-container {
+  margin-top: 20px;
+  border: 1px solid var(--color-base);
+  border-radius: 8px;
+  padding: 16px;
+  background-color: white;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header h2 {
+  color: var(--color-base);
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+}
+
+.calendar-event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#header-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Edit button styles for when it's in the header */
+.edit-nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.edit-nav-btn:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Remove the old edit button container styles */
+.nav-edit-button {
+  display: none; /* Hide any old instances of the button that might be created */
+}
+
+/* NEW: 3-Layer Menu Specific Fixes */
+
+/* Ensure proper z-index stacking for nested menus */
+.nav__item {
+  z-index: 1;
+}
+
+.nav__sub-list {
+  z-index: 2;
+}
+
+.nav__sub-sub-list {
+  z-index: 3;
+}
+
+/* Fix potential overflow issues with deep nesting */
+.nav__sub-sub-list {
+  margin-left: -8px; /* Adjust positioning to prevent overflow */
+}
+
+/* Enhanced hover states for level 3 items */
+.nav__sub-sub-link:hover {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: var(--color-base) !important;
+}
+
+/* Ensure dropdown icons work for all levels */
+.nav__dropdown-icon {
+  transition: transform 0.3s ease !important;
+}
+
+.nav__dropdown-icon.rotated {
+  transform: rotate(180deg) !important;
+}
+
+/* Fix for potential theme inheritance issues */
+[data-theme] .nav__sub-sub-link {
+  color: var(--color-base) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme] .nav__sub-sub-link:hover {
+  border-color: var(--color-base) !important;
+}
+
+/* Level indicator styling - optional visual enhancement */
+.nav__level-indicator {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-base);
+  margin-right: 8px;
+  opacity: 0.6;
+}
+
+.nav__level-indicator--level-2 {
+  background-color: var(--color-header-start);
+}
+
+.nav__level-indicator--level-3 {
+  background-color: var(--color-header-end);
+  width: 3px;
+  height: 3px;
+}
+
+/* Ensure proper spacing for deeply nested items */
+.nav__sub-sub-item {
+  margin-bottom: 2px;
+}
+
+/* Fix transition timing for smoother animations */
+.nav__sub-list,
+.nav__sub-sub-list {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Accessibility improvements for screen readers */
+.nav__sub-sub-link[aria-expanded="true"] + .nav__sub-sub-list {
+  display: block;
+}
+
+.nav__sub-sub-link[aria-expanded="false"] + .nav__sub-sub-list {
+  display: none;
+}
+
+/* Mobile-specific fixes for 3-layer menu */
+@media (max-width: 768px) {
+  .nav__sub-sub-list {
+    margin-left: -4px;
+    padding-left: 16px;
+  }
+  
+  .nav__sub-sub-link {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+}
+
+/* Debug mode - uncomment to see menu structure visually */
+/*
+.debug-menu .nav__item {
+  outline: 1px solid red;
+}
+
+.debug-menu .nav__sub-list {
+  outline: 1px solid blue;
+}
+
+.debug-menu .nav__sub-sub-list {
+  outline: 1px solid green;
+}
+*/
